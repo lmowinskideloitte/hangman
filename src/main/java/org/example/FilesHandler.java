@@ -14,7 +14,7 @@ public class FilesHandler {
     }
 
     private static String[] tokenizeString(String rawStr) {
-        return StringUtils.split(StringUtils.strip(rawStr));
+        return StringUtils.split(StringUtils.strip(rawStr), '\n');
     }
 
     protected static String[] readWordsFromFile(String filename) throws IOException {
