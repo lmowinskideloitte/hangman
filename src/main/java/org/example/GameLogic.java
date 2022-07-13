@@ -4,14 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameLogic {
-    private static boolean isGoodGuess(String word, Character guessedChar) {
+    protected static boolean isGoodGuess(String word, Character guessedChar) {
     String wordUpp = word.toUpperCase(Locale.ROOT);
     String guessedStringUpp = Character.toString(guessedChar).toUpperCase(Locale.ROOT);
 
     return (Character.isLetterOrDigit(guessedChar) && wordUpp.contains(guessedStringUpp));
     }
 
-    protected static boolean hasWon(String word, ArrayList<Character> goodGuesses) {
+    protected static boolean hasGuessedAll(String word, ArrayList<Character> goodGuesses) {
         String notLowerAlphaNum = "[^a-z\\d]";
         String[] alphaNumWord = word.toLowerCase().replaceAll(notLowerAlphaNum, "").split("");
 

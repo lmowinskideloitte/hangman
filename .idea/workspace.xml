@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfa2be46-f5bf-423e-b74d-a7340ed15c6a" name="Changes" comment="feat: added GameLogic Class&#10;&#10;fixed FileHandler to accept ArrayList rather than char[]">
+    <list default="true" id="cfa2be46-f5bf-423e-b74d-a7340ed15c6a" name="Changes" comment="feat(GameLogic): hasWon added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
@@ -83,7 +84,7 @@
       <workItem from="1657626447927" duration="3038000" />
       <workItem from="1657631437423" duration="15776000" />
       <workItem from="1657653661798" duration="296000" />
-      <workItem from="1657695877805" duration="6772000" />
+      <workItem from="1657695877805" duration="8706000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1657635855040</created>
@@ -120,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657700058412</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(GameLogic): hasWon added">
+      <created>1657702848346</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657702848346</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +151,7 @@
     <MESSAGE value="feat: added BoardPrinter Class with printHangman/Guess&#10;&#10;fix(FilesHandler): fixed &quot;tokenizing&quot; words (which now is a wrong term for that) that have a space between them&#10;&#10;test(Main): testing by printing B)))" />
     <MESSAGE value="fix(FilesHandler): working file parser&#10;&#10;Deleted readFile, tokenizeString, readWordsFromFile&#10;Added parseFile, which essentially does the same thing but better." />
     <MESSAGE value="feat: added GameLogic Class&#10;&#10;fixed FileHandler to accept ArrayList rather than char[]" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added GameLogic Class&#10;&#10;fixed FileHandler to accept ArrayList rather than char[]" />
+    <MESSAGE value="feat(GameLogic): hasWon added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(GameLogic): hasWon added" />
   </component>
 </project>
