@@ -11,6 +11,7 @@ public class Game {
     private ArrayList<Character> correctGuesses = new ArrayList<>();
     private ArrayList<Character> wrongGuesses = new ArrayList<>();
     private int lives = 6;
+    private final int defaultLives = 6;
     private String filename = "./words.txt";
 
     protected void setLives(int lives) {
@@ -100,6 +101,7 @@ public class Game {
             switch (scan.next().toUpperCase(Locale.ROOT)) {
                 case "S" -> {
                     clearArrays();
+                    setLives(this.defaultLives);
                     play();
                 }
                 case "A" -> wordAdder();
