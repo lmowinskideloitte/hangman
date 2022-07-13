@@ -64,6 +64,14 @@ public class BoardPrinter {
                           |
                           |
                     =========""");
+            default -> System.out.println("""
+                      +---+
+                      |   |
+                    extra |
+                    lives |
+                          |
+                          |
+                    =========""");
         }
     }
 

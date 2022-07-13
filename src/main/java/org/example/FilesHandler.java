@@ -5,20 +5,23 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class FilesHandler {
-    private static String readFile(String filename) throws IOException {
-        try(FileInputStream inputStream = new FileInputStream(filename)) {
-            return IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+    protected static ArrayList<String> parseFile(String filename) throws IOException {
+        ArrayList<String> words = new ArrayList<>();
+        try(Scanner scan = new Scanner(new File(filename))){
+            while(scan.hasNext()){
+                String line = StringUtils.strip(scan.nextLine());
+                words.add(line);
+            }
         }
-    }
-
-    private static String[] tokenizeString(String rawStr) {
-        return StringUtils.split(StringUtils.strip(rawStr), '\n');
-    }
-
-    protected static String[] readWordsFromFile(String filename) throws IOException {
-        return tokenizeString(readFile(filename));
+        return words;
     }
 
     private static FileWriter ensureFileExists(String path) throws IOException {
