@@ -4,11 +4,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameLogic {
-    protected static boolean isGoodGuess(String word, Character guessedChar) {
+    protected static boolean isCorrectGuess(String word, Character guessedChar) {
     String wordUpp = word.toUpperCase(Locale.ROOT);
     String guessedStringUpp = Character.toString(guessedChar).toUpperCase(Locale.ROOT);
 
     return (Character.isLetterOrDigit(guessedChar) && wordUpp.contains(guessedStringUpp));
+    }
+
+    protected static boolean alreadyGiven(Character ch, ArrayList<Character> wrongGuesses) {
+        return wrongGuesses.stream().anyMatch(ch::equals);
     }
 
     protected static boolean hasGuessedAll(String word, ArrayList<Character> goodGuesses) {

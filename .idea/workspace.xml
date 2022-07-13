@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfa2be46-f5bf-423e-b74d-a7340ed15c6a" name="Changes" comment="feat(Game): printMenu, wordAdder, clearArrays, initialise added&#10;&#10;game should be fully working in theory, there are some QOL features to be added but apart from that, everything should work smoothly">
+    <list default="true" id="cfa2be46-f5bf-423e-b74d-a7340ed15c6a" name="Changes" comment="feat: wordbank -&gt; words.txt added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLogic.java" afterDir="false" />
@@ -83,7 +83,7 @@
       <workItem from="1657626447927" duration="3038000" />
       <workItem from="1657631437423" duration="15776000" />
       <workItem from="1657653661798" duration="296000" />
-      <workItem from="1657695877805" duration="12982000" />
+      <workItem from="1657695877805" duration="18993000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1657635855040</created>
@@ -141,7 +141,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657707501536</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix: added defaultLives, small fixes">
+      <created>1657709040766</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657709040766</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: wordbank -&gt; words.txt added">
+      <created>1657709084347</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1657709084347</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +181,8 @@
     <MESSAGE value="feat(GameLogic): hasWon added" />
     <MESSAGE value="feat: Game class added" />
     <MESSAGE value="feat(Game): printMenu, wordAdder, clearArrays, initialise added&#10;&#10;game should be fully working in theory, there are some QOL features to be added but apart from that, everything should work smoothly" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(Game): printMenu, wordAdder, clearArrays, initialise added&#10;&#10;game should be fully working in theory, there are some QOL features to be added but apart from that, everything should work smoothly" />
+    <MESSAGE value="fix: added defaultLives, small fixes" />
+    <MESSAGE value="feat: wordbank -&gt; words.txt added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: wordbank -&gt; words.txt added" />
   </component>
 </project>

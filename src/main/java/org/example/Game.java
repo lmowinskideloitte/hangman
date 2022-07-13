@@ -11,7 +11,7 @@ public class Game {
     private ArrayList<Character> correctGuesses = new ArrayList<>();
     private ArrayList<Character> wrongGuesses = new ArrayList<>();
     private int lives = 6;
-    private final int defaultLives = 6;
+    private int defaultLives = 6;
     private String filename = "./words.txt";
 
     protected void setLives(int lives) {
@@ -33,10 +33,13 @@ public class Game {
 
     private void nextRound() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("make your guess: ");
-        Character guess = scan.next().toUpperCase().charAt(0);
-
-        if (GameLogic.isGoodGuess(this.GuessWord, guess)) {
+        char guess;
+        do {
+            System.out.print("make your guess: ");
+            guess = scan.next().toUpperCase().charAt(0);
+        }
+        while (GameLogic.alreadyGiven(guess, this.wrongGuesses) || !Character.isLetterOrDigit(guess));
+        if (GameLogic.isCorrectGuess(this.GuessWord, guess)) {
             this.correctGuesses.add(guess);
         } else {
             this.wrongGuesses.add(guess);
@@ -63,19 +66,32 @@ public class Game {
     }
 
     private void printMenu() {
-        System.out.println("""
+        System.out.print("""
                 [S]tart new game
                 [A]dd word to wordbank
                 [E]xit
+                [C]hange wordbank path
+                Change [L]ife count
                 
-                your choice:\040
-                """);
+                your choice:\s""");
     }
 
     private void wordAdder() throws IOException {
         Scanner scan = new Scanner(System.in);
         System.out.print("type your word: ");
         FilesHandler.addWord(this.filename, scan.next());
+    }
+
+    private void wordbankChanger() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("type new path: ");
+        setFilename(scan.next());
+    }
+
+    private void lifeCountChanger() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("type new life count: ");
+        this.defaultLives = scan.nextInt();
     }
 
     private void clearArrays() {
@@ -106,6 +122,8 @@ public class Game {
                 }
                 case "A" -> wordAdder();
                 case "E" -> System.exit(0);
+                case "C" -> wordbankChanger();
+                case "L" -> lifeCountChanger();
                 default -> System.out.println("wrong choice");
             }
         }
