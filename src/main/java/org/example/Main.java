@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws IOException {
         // Testing on Main woo-hoo!!!1
-        Game game1 = new Game();
-        game1.play();
+        Game g = new Game();
+        g.initialise();
     }
 }

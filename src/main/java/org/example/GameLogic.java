@@ -15,9 +15,8 @@ public class GameLogic {
         String notLowerAlphaNum = "[^a-z\\d]";
         String[] alphaNumWord = word.toLowerCase().replaceAll(notLowerAlphaNum, "").split("");
 
-        String uqSortedWord = Arrays.stream(alphaNumWord).distinct().sorted().collect(Collectors.joining());
-        String sortedGuesses = goodGuesses.stream().sorted().map(String::valueOf).collect(Collectors.joining());
-
+        String uqSortedWord = Arrays.stream(alphaNumWord).distinct().sorted().collect(Collectors.joining()).toUpperCase();
+        String sortedGuesses = goodGuesses.stream().sorted().map(String::valueOf).collect(Collectors.joining()).toUpperCase();
         return uqSortedWord.equals(sortedGuesses);
     }
 

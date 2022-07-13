@@ -74,6 +74,9 @@ public class BoardPrinter {
         }
     }
 
+    protected static void printWord(String word) {
+        System.out.println(word.toUpperCase());
+    }
     protected static void printGuess(String word, ArrayList<Character> correctChars, ArrayList<Character> wrongChars) {
         char[] wordCharUppArr = word.toUpperCase(Locale.ROOT).toCharArray();
         String correctString = CharArrListToString(correctChars).toUpperCase(Locale.ROOT);
