@@ -1,9 +1,8 @@
 package org.example;
 
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class BoardPrinter {
     protected static void printHangman(int livesLeft) {
@@ -75,24 +74,17 @@ public class BoardPrinter {
         }
     }
 
-//    protected static void printGuess(String word, Character[] guessedChars) {
-//        char[] wordCharUppArr = word.toUpperCase(Locale.ROOT).toCharArray();
-//        Character[] wordObjCharArr = ArrayUtils.toObject(wordCharUppArr);
-//        String guessedString = new String(ArrayUtils.toPrimitive(guessedChars)).toUpperCase(Locale.ROOT);
-//
-//        for (Character ch : wordObjCharArr) {
-//            // XOR to print special characters (which are obviously a part of guessedString)
-//            System.out.printf((Character.isLetterOrDigit(ch) ^ guessedString.indexOf(ch) < 0) ? "%s " : "_ ", ch);
-//        }
-//        System.out.println("\n" + Arrays.toString(guessedChars));
-//    }
-    protected static void printGuess(String word, char[] correctChars, char[] wrongChars) {
+    protected static void printGuess(String word, ArrayList<Character> correctChars, ArrayList<Character> wrongChars) {
         char[] wordCharUppArr = word.toUpperCase(Locale.ROOT).toCharArray();
-        String correctString = new String(correctChars).toUpperCase(Locale.ROOT);
+        String correctString = CharArrListToString(correctChars).toUpperCase(Locale.ROOT);
 
         for (char ch : wordCharUppArr) {
             System.out.printf((Character.isLetterOrDigit(ch) ^ correctString.indexOf(ch) < 0) ? "%s " : "_ ", ch);
         }
-        System.out.println('\n' + String.join(", ", new String(wrongChars).split("")));
+        System.out.println('\n' + String.join(", ", CharArrListToString(wrongChars).split("")));
+    }
+
+    private static String CharArrListToString(ArrayList<Character> al) {
+        return al.stream().map(Object::toString).collect(Collectors.joining());
     }
 }
