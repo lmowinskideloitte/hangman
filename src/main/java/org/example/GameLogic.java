@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameLogic {
+//    TODO: format
     protected static boolean isCorrectGuess(String word, Character guessedChar) {
     String wordUpp = word.toUpperCase(Locale.ROOT);
     String guessedStringUpp = Character.toString(guessedChar).toUpperCase(Locale.ROOT);
@@ -12,6 +13,7 @@ public class GameLogic {
     }
 
     protected static boolean alreadyGiven(Character ch, ArrayList<Character> wrongGuesses) {
+//        TODO: contains
         return wrongGuesses.stream().anyMatch(ch::equals);
     }
 

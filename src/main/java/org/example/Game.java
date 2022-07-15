@@ -7,13 +7,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
+//    TODO: mala litera
     private String GuessWord = "";
+//    TODO: uzyj interfejsu
     private ArrayList<Character> correctGuesses = new ArrayList<>();
     private ArrayList<Character> wrongGuesses = new ArrayList<>();
     private int lives = 6;
     private int defaultLives = 6;
     private String filename = "./words.txt";
 
+//    TODO: priv
     protected void setLives(int lives) {
         this.lives = lives;
     }
@@ -24,6 +27,7 @@ public class Game {
 
     private void getRandomWord(String wordBankFilename) throws IOException {
         ArrayList<String> wordList = FilesHandler.parseFile(wordBankFilename);
+//        TODO: zapisz Rand
         this.GuessWord = wordList.get(new Random().nextInt(wordList.size()));
     }
 
@@ -34,6 +38,7 @@ public class Game {
     private void nextRound() {
         Scanner scan = new Scanner(System.in);
         char guess;
+//        TODO: komunikat o inpucie
         do {
             System.out.print("make your guess: ");
             guess = scan.next().toUpperCase().charAt(0);
@@ -42,6 +47,7 @@ public class Game {
         if (GameLogic.isCorrectGuess(this.GuessWord, guess)) {
             this.correctGuesses.add(guess);
         } else {
+//            TODO: lives--
             this.wrongGuesses.add(guess);
             lives -= 1;
         }

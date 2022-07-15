@@ -82,6 +82,7 @@ public class BoardPrinter {
         String correctString = CharArrListToString(correctChars).toUpperCase(Locale.ROOT);
 
         for (char ch : wordCharUppArr) {
+//            TODO: xor jest fajny, nikt nie używa xD
             System.out.printf((Character.isLetterOrDigit(ch) ^ correctString.indexOf(ch) < 0) ? "%s " : "_ ", ch);
         }
         System.out.println('\n' + String.join(", ", CharArrListToString(wrongChars).split("")));
