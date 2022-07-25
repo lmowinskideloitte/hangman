@@ -12,12 +12,12 @@ public class GameLogic {
     return (Character.isLetterOrDigit(guessedChar) && wordUpp.contains(guessedStringUpp));
     }
 
-    protected static boolean alreadyGiven(Character ch, ArrayList<Character> wrongGuesses) {
+    protected static boolean alreadyGiven(Character ch, List<Character> wrongGuesses) {
 //        TODO: contains
         return wrongGuesses.stream().anyMatch(ch::equals);
     }
 
-    protected static boolean hasGuessedAll(String word, ArrayList<Character> goodGuesses) {
+    protected static boolean hasGuessedAll(String word, List<Character> goodGuesses) {
         String notLowerAlphaNum = "[^a-z\\d]";
         String[] alphaNumWord = word.toLowerCase().replaceAll(notLowerAlphaNum, "").split("");
 

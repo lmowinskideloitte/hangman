@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
@@ -77,7 +77,7 @@ public class BoardPrinter {
     protected static void printWord(String word) {
         System.out.println(word.toUpperCase());
     }
-    protected static void printGuess(String word, ArrayList<Character> correctChars, ArrayList<Character> wrongChars) {
+    protected static void printGuess(String word, List<Character> correctChars, List<Character> wrongChars) {
         char[] wordCharUppArr = word.toUpperCase(Locale.ROOT).toCharArray();
         String correctString = CharArrListToString(correctChars).toUpperCase(Locale.ROOT);
 
@@ -88,7 +88,7 @@ public class BoardPrinter {
         System.out.println('\n' + String.join(", ", CharArrListToString(wrongChars).split("")));
     }
 
-    private static String CharArrListToString(ArrayList<Character> al) {
+    private static String CharArrListToString(List<Character> al) {
         return al.stream().map(Object::toString).collect(Collectors.joining());
     }
 }

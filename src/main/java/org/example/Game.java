@@ -1,23 +1,17 @@
 package org.example;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
-//    TODO: mala litera
-    private String GuessWord = "";
-//    TODO: uzyj interfejsu
-    private ArrayList<Character> correctGuesses = new ArrayList<>();
-    private ArrayList<Character> wrongGuesses = new ArrayList<>();
+    private String guessWord = "";
+    private List<Character> correctGuesses = new ArrayList<>();
+    private List<Character> wrongGuesses = new ArrayList<>();
     private int lives = 6;
     private int defaultLives = 6;
     private String filename = "./words.txt";
+    private WordsDao wordsDao = WordsDaoDbImpl.getInstance();
 
-//    TODO: priv
-    protected void setLives(int lives) {
+    private void setLives(int lives) {
         this.lives = lives;
     }
 
@@ -25,14 +19,14 @@ public class Game {
         this.filename = filename;
     }
 
-    private void getRandomWord(String wordBankFilename) throws IOException {
-        ArrayList<String> wordList = FilesHandler.parseFile(wordBankFilename);
+    private void getRandomWord() {
+        List<String> wordList = wordsDao.getWords();
 //        TODO: zapisz Rand
-        this.GuessWord = wordList.get(new Random().nextInt(wordList.size()));
+        this.guessWord = wordList.get(new Random().nextInt(wordList.size()));
     }
 
     private boolean gameEnded() {
-        return this.lives <= 0 || GameLogic.hasGuessedAll(this.GuessWord, this.correctGuesses);
+        return this.lives <= 0 || GameLogic.hasGuessedAll(this.guessWord, this.correctGuesses);
     }
 
     private void nextRound() {
@@ -40,34 +34,32 @@ public class Game {
         char guess;
 //        TODO: komunikat o inpucie
         do {
-            System.out.print("make your guess: ");
             guess = scan.next().toUpperCase().charAt(0);
         }
         while (GameLogic.alreadyGiven(guess, this.wrongGuesses) || !Character.isLetterOrDigit(guess));
-        if (GameLogic.isCorrectGuess(this.GuessWord, guess)) {
+        if (GameLogic.isCorrectGuess(this.guessWord, guess)) {
             this.correctGuesses.add(guess);
         } else {
-//            TODO: lives--
             this.wrongGuesses.add(guess);
-            lives -= 1;
+            lives--;
         }
     }
 
     private void endScreen() {
         System.out.println(
-                GameLogic.hasGuessedAll(this.GuessWord, this.correctGuesses) ? "YOU'VE WON!!!1\n" : "GIT GUD LOL\n"
+                GameLogic.hasGuessedAll(this.guessWord, this.correctGuesses) ? "YOU'VE WON!!!1\n" : "GIT GUD LOL\n"
         );
     }
-    private void play() throws IOException {
-        getRandomWord(this.filename);
+    private void play() {
+        getRandomWord();
         do {
             BoardPrinter.printHangman(this.lives);
-            BoardPrinter.printGuess(this.GuessWord, this.correctGuesses, this.wrongGuesses);
+            BoardPrinter.printGuess(this.guessWord, this.correctGuesses, this.wrongGuesses);
             nextRound();
         }
         while (!gameEnded());
         BoardPrinter.printHangman(this.lives);
-        BoardPrinter.printWord(this.GuessWord);
+        BoardPrinter.printWord(this.guessWord);
         endScreen();
     }
 
@@ -82,10 +74,10 @@ public class Game {
                 your choice:\s""");
     }
 
-    private void wordAdder() throws IOException {
+    private void wordAdder() {
         Scanner scan = new Scanner(System.in);
         System.out.print("type your word: ");
-        FilesHandler.addWord(this.filename, scan.next());
+        wordsDao.addWord(scan.next());
     }
 
     private void wordbankChanger() {
@@ -104,7 +96,7 @@ public class Game {
         this.correctGuesses = new ArrayList<>();
         this.wrongGuesses = new ArrayList<>();
     }
-    protected void initialise() throws IOException {
+    protected void initialise() {
         System.out.println("""
                                 
                  ██░ ██  ▄▄▄       ███▄    █   ▄████  ███▄ ▄███▓ ▄▄▄       ███▄    █\s
